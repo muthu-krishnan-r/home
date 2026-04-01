@@ -3,47 +3,110 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Learning Hub</title>
+<title>Observability Learning Hub</title>
 
 <style>
     body {
         margin: 0;
-        font-family: "Segoe UI", Tahoma;
-        background: #0f172a;
+        font-family: "Segoe UI", Tahoma, sans-serif;
+        background: radial-gradient(circle at top, #1b2a4b 0%, #0f172a 55%, #020617 100%);
         color: #fff;
+    }
+
+    .topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 30px;
+        background: rgba(15, 23, 42, 0.88);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+
+    .topbar .brand {
+        font-size: 22px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        color: #7dd3fc;
+    }
+
+    .topbar nav a {
+        margin-left: 16px;
+        color: #cbd5e1;
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+    .topbar nav a:hover {
+        color: #38bdf8;
+    }
+
+    .search-box {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .search-box input {
+        border-radius: 999px;
+        border: 1px solid #334155;
+        background: rgba(255,255,255,0.08);
+        color: #e2e8f0;
+        padding: 7px 12px;
+        width: 160px;
+        transition: width 0.25s ease;
+    }
+
+    .search-box input:focus {
+        outline: none;
+        width: 230px;
+        border-color: #38bdf8;
+        background: rgba(255,255,255,0.15);
     }
 
     .header {
         padding: 20px;
         text-align: center;
-        background: #1e293b;
-        font-size: 28px;
-        font-weight: bold;
+        background: linear-gradient(135deg, #1e3a8a, #0f172a);
+        font-size: 32px;
+        font-weight: 800;
+        letter-spacing: 1px;
+        color: #a5b4fc;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
     }
 
     .container {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
         gap: 20px;
-        padding: 30px;
+        padding: 25px;
+        max-width: 1200px;
+        margin: 0 auto;
     }
 
     .card {
-        background: #1e293b;
-        border-radius: 15px;
-        padding: 20px;
-        transition: 0.3s;
-        box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        background: linear-gradient(145deg, #111827, #1e293b);
+        border: 1px solid rgba(148, 163, 184, 0.15);
+        border-radius: 16px;
+        padding: 22px;
+        transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+        box-shadow: 0 8px 14px rgba(0,0,0,0.25);
     }
 
     .card:hover {
-        transform: translateY(-5px);
-        background: #334155;
+        transform: translateY(-6px) scale(1.01);
+        box-shadow: 0 14px 24px rgba(0,0,0,0.35);
+        border-color: rgba(56, 189, 248, 0.45);
     }
 
     .card h2 {
         margin-top: 0;
-        color: #38bdf8;
+        color: #7dd3fc;
+        font-size: 20px;
+        margin-bottom: 12px;
     }
 
     .card ul {
@@ -53,6 +116,21 @@
 
     .card ul li {
         margin: 10px 0;
+    }
+
+    .card ul li > ul {
+        margin-top: 6px;
+        margin-left: 15px;
+    }
+
+    .os-name {
+        font-weight: bold;
+        color: #34d399;
+        display: inline-block;
+    }
+
+    .os-name.windows {
+        color: #60a5fa;
     }
 
     .card ul li a {
@@ -67,7 +145,7 @@
 
     .footer {
         text-align: center;
-        padding: 10px;
+        padding: 14px;
         font-size: 12px;
         color: #94a3b8;
     }
@@ -77,8 +155,22 @@
 
 <body>
 
+<div class="topbar">
+    <div class="brand">Learning Hub</div>
+    <div class="search-box">
+        <input type="text" placeholder="Search topics..." aria-label="Search topics" />
+    </div>
+    <nav>
+        <a href="#">All</a>
+        <a href="#">Observability</a>
+        <a href="#">Cloud</a>
+        <a href="#">OS</a>
+        <a href="#">Scripts</a>
+    </nav>
+</div>
+
 <div class="header">
-🚀 Observability Learning Hub
+Learning Hub
 </div>
 
 <div class="container">
@@ -112,6 +204,25 @@
             <li><a href="pages/database/mssql/day1.html">MSSQL</a></li>
             <li><a href="pages/database/oracle/day1.html">Oracle</a></li>
             <li><a href="pages/database/psql/day1.html">PostgreSQL</a></li>
+        </ul>
+    </div>
+
+    <!-- Operating System -->
+    <div class="card">
+        <h2>🖥️ Operating System</h2>
+        <ul>
+            <li><span class="os-name">Linux</span>
+                <ul>
+                    <li>OCI/Redhat/Rocky/Alma</li>
+                    <li>Ubuntu/Kali</li>
+                </ul>
+            </li>
+            <li><span class="os-name windows">Windows</span>
+                <ul>
+                    <li>Server</li>
+                    <li>Workstation or PC</li>
+                </ul>
+            </li>
         </ul>
     </div>
 
